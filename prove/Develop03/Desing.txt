@@ -1,0 +1,37 @@
+Word: 
+
+    private _word: string // the word.
+    private _hidden: bool // knows if it is hidden or not
+    
+    public Word(string word) : Constructor
+    
+    public Hide(): void // turns _hidden to true
+    public IsHidden(): bool // returns if the word is hidden or not 
+    public GetWord(): string // returns the word
+
+Verse:
+
+    private _verse: string // The verse
+
+    public Verse(string verse): Constructor
+
+    public Hide3Words(): void // hide 3 random words in the verse
+    private SplitInWords(): string[] // split the verse in words and return the array with the words
+    private RebuildVerse(string[]): void // Modifies the verse with the new hidden words
+    public GetVerse(): string 
+    public Display(): void
+    public TotallyHidden(): bool // tells if the verse is totally hidden
+
+Scripture:
+
+    private _book : string 
+    private _chapter: int
+    private _startVerse: int
+    private _endVerse: int
+    private _verses: List<Verse>
+
+    Scripture(book, chapt, verse): Constructor
+    Scripture(book, chapt, startVerse, endVerse): Constructor 
+
+    private ReadFromFile() : void 
+    public DisplayScripture() : void 
