@@ -1,3 +1,4 @@
+//For Showing Creativity and Exceeding Requirements I added the option to create negative goals. The user loses points for bad habits.
 using System;
 
 class Program
