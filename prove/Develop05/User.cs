@@ -53,7 +53,6 @@ public class User
         Console.Clear();
         Console.Write("Please Introduce the Filename: ");
         string filename = Console.ReadLine();
-        //List<string[]> goals = new List<string[]>();
         bool first = true;
         string[] lines = System.IO.File.ReadAllLines(filename);
         _goals.Clear();
@@ -99,6 +98,20 @@ public class User
                 CheckListGoal newGoal = new CheckListGoal(parts[1],parts[2],int.Parse(parts[3]),int.Parse(parts[4]),int.Parse(parts[5]),int.Parse(parts[6]),complete);
                 _goals.Add(newGoal);
             }
+            else if(int.Parse(parts[0]) == 4)
+            {
+                bool complete;
+                if(parts[4].ToLower().Equals("true"))
+                {
+                    complete = true;
+                }
+                else
+                {
+                    complete = false;
+                }
+                SimpleNegativeGoal newGoal = new SimpleNegativeGoal(parts[1],parts[2],int.Parse(parts[3]),complete);
+                _goals.Add(newGoal);
+            }
         }
 
     }
@@ -106,7 +119,7 @@ public class User
     public void CreateNewGoal()
     {
         Console.Clear();
-        Console.Write("The types of Goals are:\n    1. Simple Goal\n    2. Eternal Goal\n    3. Checklist Goal\nWhich type of goal would you like to create?: ");
+        Console.Write("The types of Goals are:\n    1. Simple Goal\n    2. Eternal Goal\n    3. Checklist Goal\n    4. Simple Negative Goal\nWhich type of goal would you like to create?: ");
         int goalType = int.Parse(Console.ReadLine());
 
         if(goalType == 1)
@@ -144,6 +157,21 @@ public class User
             Console.Write("What is the bonus for accomplishing it that many times?: ");
             int bonusPoints = int.Parse(Console.ReadLine());
             CheckListGoal goal = new CheckListGoal(goalName,goalDescription,goalPoints,bonusPoints,timeForBonus,0,false);
+            _goals.Add(goal);
+        }
+        else if(goalType == 4)
+        {
+            Console.Write("What is the name of the goal?: ");
+            string goalName = Console.ReadLine();
+            Console.Write("What is short description of it?: ");
+            string goalDescription = Console.ReadLine();
+            Console.Write("What is the amount of points to lose associated with this goal?: ");
+            int goalPoints = int.Parse(Console.ReadLine());
+            if(goalPoints>=0)
+            {
+                goalPoints *= -1;
+            }
+            SimpleNegativeGoal goal = new SimpleNegativeGoal(goalName,goalDescription,goalPoints,false);
             _goals.Add(goal);
         }
     }

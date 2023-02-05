@@ -31,8 +31,4 @@ public abstract class Goal
         return _points;
     }
 
-    /*public int GetTypeClass()
-    {
-        return _type;
-    }*/
 }
